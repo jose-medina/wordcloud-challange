@@ -1,0 +1,9 @@
+{
+    "clientfolder": "src",
+    "viewfolder": "js/views",
+    "modelfolder": "js/models",
+    "collectionfolder": "js/collections",
+    "makecollection": true,
+    "approot": "./",
+    "quotes": "single"
+}

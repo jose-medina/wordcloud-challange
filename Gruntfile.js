@@ -9,17 +9,19 @@ module.exports = function(grunt) {
 		browserify: {
 			dist: {
 				files: {
-					'dist/js/common.js': 'src/js/main.js'
+					'dist/js/common.js': 'src/js/router.js'
 				}
 			}
 		},
 		handlebars: {
 			compile: {
 				options: {
-					namespace: "JST",
+					helpers: require('./src/js/helpers/handlebars.js'),
 					node: true
 				},
-				files: {}
+				files: {
+					'./src/js/templates.js' : [ './src/templates/**/*.hbs']
+				}
 			}
 		},
 		uglify: {
