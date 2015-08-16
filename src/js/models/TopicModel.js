@@ -3,7 +3,9 @@ var AmpersandModel = require('ampersand-model');
 module.exports = AmpersandModel.extend({
 	props: {
 		id: '',
-		label: ''
+		label: '',
+		sentiment: {},
+		sentimentScore: 0
 	},
 	initialize: function () {}
 });

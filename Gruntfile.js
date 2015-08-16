@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 		browserify: {
 			dist: {
 				files: {
-					'dist/js/common.js': 'src/js/router.js'
+					'dist/js/common.js': 'src/js/app.js'
 				}
 			}
 		},
