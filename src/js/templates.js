@@ -25,13 +25,17 @@ this["JST"]["./src/templates/topic-item.hbs"] = Handlebars.template({"compiler":
 
   return "<li>\n	<a class=\"topic\" href=\"topic/"
     + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">\n		<span class=\"topic-label "
+    + alias3(((helper = (helper = helpers.sentimentClass || (depth0 != null ? depth0.sentimentClass : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sentimentClass","hash":{},"data":data}) : helper)))
+    + " "
+    + alias3(((helper = (helper = helpers.sizeClass || (depth0 != null ? depth0.sizeClass : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sizeClass","hash":{},"data":data}) : helper)))
     + "\">"
     + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
-    + "</a>\n</li>";
+    + "</span>\n	</a>\n</li>";
 },"useData":true});
 
 this["JST"]["./src/templates/wordcloud.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<ul>\n\n</ul>";
+    return "<ul id=\"wordcloud\">\n\n</ul>";
 },"useData":true});
 
 if (typeof exports === 'object' && exports) {module.exports = this["JST"];}

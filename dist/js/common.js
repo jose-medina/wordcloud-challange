@@ -22302,7 +22302,18 @@ module.exports = AmpersandCollection.extend({
 	model: TopicModel,
 	initialize: function () {},
 	parse: function (res) {
-		return res.topics;
+		var topics = res.topics;
+		var maxVolume = 0;
+
+		topics.forEach(function (topic) {
+			maxVolume = Math.max(maxVolume, topic.volume);
+		});
+
+		topics.forEach(function (topic) {
+			topic.maxVolume = maxVolume;
+		});
+
+		return topics;
 	}
 });
 },{"../models/TopicModel.js":801,"ampersand-rest-collection":172}],801:[function(require,module,exports){
@@ -22313,9 +22324,36 @@ module.exports = AmpersandModel.extend({
 		id: '',
 		label: '',
 		sentiment: {},
-		sentimentScore: 0
+		sentimentScore: 0,
+		sentimentClass: '',
+		volume: 0,
+		maxVolume: 0,
+		sizeClass: ''
 	},
-	initialize: function () {}
+	initialize: function () {
+		this.set('sentimentClass', this._getSentimentClass());
+		this.set('sizeClass', this._getSizeClass());
+	},
+	_getSizeClass: function () {
+		return 'topic-size-' + Math.ceil((this.get('volume') / this.get('maxVolume')) * 6);
+	},
+	_getSentimentClass: function () {
+		var result;
+		var sentimentScore = this.get('sentimentScore');
+
+		switch(true) {
+			case sentimentScore > 60:
+				result = 'high-sentiment-score';
+				break;
+			case sentimentScore < 40:
+				result = 'medium-sentiment-score';
+				break;
+			default:
+				result = 'low-sentiment-score';
+		}
+
+		return result;
+	}
 });
 },{"ampersand-model":45}],802:[function(require,module,exports){
 var AmpersandRouter = require('ampersand-router');
@@ -22356,13 +22394,17 @@ this["JST"]["./src/templates/topic-item.hbs"] = Handlebars.template({"compiler":
 
   return "<li>\n	<a class=\"topic\" href=\"topic/"
     + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">\n		<span class=\"topic-label "
+    + alias3(((helper = (helper = helpers.sentimentClass || (depth0 != null ? depth0.sentimentClass : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sentimentClass","hash":{},"data":data}) : helper)))
+    + " "
+    + alias3(((helper = (helper = helpers.sizeClass || (depth0 != null ? depth0.sizeClass : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sizeClass","hash":{},"data":data}) : helper)))
     + "\">"
     + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
-    + "</a>\n</li>";
+    + "</span>\n	</a>\n</li>";
 },"useData":true});
 
 this["JST"]["./src/templates/wordcloud.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<ul>\n\n</ul>";
+    return "<ul id=\"wordcloud\">\n\n</ul>";
 },"useData":true});
 
 if (typeof exports === 'object' && exports) {module.exports = this["JST"];}
@@ -22396,7 +22438,7 @@ module.exports = AmpersandView.extend({
 	onTopicClicked: function (event) {
 		event.preventDefault();
 
-		this.parent.onTopicClicked(event.target.getAttribute('href'));
+		this.parent.onTopicClicked(event.delegateTarget.getAttribute('href'));
 	},
 	render: function () {
 		this.renderWithTemplate(this.model.toJSON());

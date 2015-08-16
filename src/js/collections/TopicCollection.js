@@ -6,6 +6,17 @@ module.exports = AmpersandCollection.extend({
 	model: TopicModel,
 	initialize: function () {},
 	parse: function (res) {
-		return res.topics;
+		var topics = res.topics;
+		var maxVolume = 0;
+
+		topics.forEach(function (topic) {
+			maxVolume = Math.max(maxVolume, topic.volume);
+		});
+
+		topics.forEach(function (topic) {
+			topic.maxVolume = maxVolume;
+		});
+
+		return topics;
 	}
 });

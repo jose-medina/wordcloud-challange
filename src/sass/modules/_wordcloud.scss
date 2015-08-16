@@ -1,0 +1,41 @@
+@import 'compass';
+
+#wordcloud {
+	width: 75%;
+
+	ul {
+		list-style: none;
+	}
+
+	li {
+		display: inline;
+	}
+
+	.topic {
+		text-decoration: none;
+	}
+
+	.topic-label {
+		margin: .5em;
+
+		&.high-sentiment-score {
+			color: #FF0000;
+		}
+		&.medium-sentiment-score {
+			color: #0000FF;
+		}
+		&.low-sentiment-score {
+			color: #555555;
+		}
+
+		$types: 6;
+		$type-width: 20px;
+
+		@while $types > 0 {
+			&.topic-size-#{$types} {
+				font-size: #{$types}em;
+			}
+			$types: $types - 1;
+		}
+	}
+}

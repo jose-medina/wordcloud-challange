@@ -11,7 +11,7 @@ module.exports = AmpersandView.extend({
 	onTopicClicked: function (event) {
 		event.preventDefault();
 
-		this.parent.onTopicClicked(event.target.getAttribute('href'));
+		this.parent.onTopicClicked(event.delegateTarget.getAttribute('href'));
 	},
 	render: function () {
 		this.renderWithTemplate(this.model.toJSON());

@@ -6,6 +6,15 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		compass: {
+            dev: {
+                options: {
+                    sassDir: './src/sass',
+                    cssDir: './dist/css',
+                    noLineComments: false
+                }
+            }
+        },
 		browserify: {
 			dist: {
 				files: {
@@ -36,9 +45,18 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test', ['']);
 
+	grunt.registerTask('css', [
+		'compass:dev'
+	]);
+
+	grunt.registerTask('js', [
+		'browserify'
+	]);
+
 	grunt.registerTask('build', [
 		'handlebars',
-		'browserify'
+		'css',
+		'js'
 	]);
 
 	grunt.registerTask('default', ['build']);
