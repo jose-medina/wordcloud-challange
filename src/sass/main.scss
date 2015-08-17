@@ -1,6 +1,8 @@
 // Partials
-@import "partials/reset";
+@import "variables";
+@import "utils/grid";
 
 // Modules
+@import "modules/header";
 @import "modules/wordcloud";
 @import "modules/topic-information";

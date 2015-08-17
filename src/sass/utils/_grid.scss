@@ -1,0 +1,14 @@
+.page-wrapper {
+	width: 100%;
+
+	.page-wrapper-inner {
+		width: $contentWidth;;
+		margin: 0 auto;
+
+		.column {
+			float: left;
+			position: relative;
+		}
+	}
+
+}

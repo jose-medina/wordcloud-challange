@@ -1,5 +1,5 @@
 #wordcloud {
-	width: 75%;
+	width: 60%;
 
 	ul {
 		list-style: none;
@@ -7,6 +7,12 @@
 
 	li {
 		display: inline;
+
+		&.js-active {
+			.topic-label {
+				background-color: lightblue;
+			}
+		}
 	}
 
 	.topic {
@@ -14,6 +20,7 @@
 	}
 
 	.topic-label {
+		white-space: nowrap;
 		margin: .5em;
 
 		&.high-sentiment-score {
@@ -26,14 +33,14 @@
 			color: #555555;
 		}
 
-		$types: 6;
+		$types: 12;
 		$type-width: 20px;
 
 		@while $types > 0 {
 			&.topic-size-#{$types} {
 				font-size: #{$types}em;
 			}
-			$types: $types - 1;
+			$types: $types - 2;
 		}
 	}
 }
