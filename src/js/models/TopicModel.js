@@ -4,6 +4,7 @@ module.exports = AmpersandModel.extend({
 	props: {
 		id: '',
 		label: '',
+		status: false,
 		sentiment: {},
 		sentimentScore: 0,
 		sentimentClass: '',

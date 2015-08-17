@@ -3,7 +3,7 @@ var Router = require('./router.js');
 var WordcloudView = require('./views/WordcloudView.js');
 var TopicInformationView = require('./views/TopicInformationView.js');
 var TopicCollection = require('./collections/TopicCollection.js');
-var TopicModel = require('./models/TopicModel.js');
+var TopicInformationModel = require('./models/TopicInformationModel.js');
 
 AmpersandApp.extend({
     router: new Router(),
@@ -15,12 +15,13 @@ AmpersandApp.extend({
 
 		var topicInformationView = new TopicInformationView({
 			el: document.getElementById('topic-information'),
-			model: new TopicModel()
+			model: new TopicInformationModel()
 		});
 
 		this.router.on('route:showTopic', function (id) {
-			var model = wordcloudView.getSubview(id).model;
-			topicInformationView.model.set(model.toJSON());
+			var topic = wordcloudView.getSubview(id);
+			wordcloudView.setCurrentSubview(topic);
+			topicInformationView.model.set(topicInformationView.model.parse(topic.model.toJSON()));
 		});
 
 		this.router.history.start({pushState: true, root: ''});
