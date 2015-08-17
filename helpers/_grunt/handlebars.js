@@ -1,11 +1,11 @@
 module.exports = {
 	compile: {
 		options: {
-			helpers: '<%= paths.src %>/js/helpers/handlebars.js',
-			node: true
+			node: true,
+			wrapped: true
 		},
 		files: {
-			'<%= paths.src %>/js/templates.js' : [ '<%= paths.src %>c/templates/views/**/*.hbs']
+			'<%= paths.src %>/js/templates.js' : [ '<%= paths.src %>/templates/views/**/*.hbs']
 		}
 	}
 };

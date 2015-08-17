@@ -44,6 +44,11 @@ module.exports = function(grunt) {
 		'js'
 	]);
 
+	grunt.registerTask('dev', [
+		'build',
+		'watch'
+	]);
+
 	grunt.registerTask('default', ['build']);
 
 };
