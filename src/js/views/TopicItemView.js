@@ -13,7 +13,7 @@ module.exports = AmpersandView.extend({
 	onTopicClicked: function (event) {
 		event.preventDefault();
 
-		this.parent.onTopicClicked(event.delegateTarget.getAttribute('href'));
+		this.parent.onTopicClicked('topic/' + encodeURIComponent(this.model.get('id')));
 	},
 	_toggleState: function (model, value) {
 		value ? this.el.classList.add('js-active') : this.el.classList.remove('js-active');
