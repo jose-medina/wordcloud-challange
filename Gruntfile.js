@@ -1,59 +1,44 @@
 module.exports = function(grunt) {
 
+	require('jit-grunt')(grunt);
+
 	require('time-grunt')(grunt);
-
-	require('load-grunt-tasks')(grunt);
-
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		compass: {
-            dev: {
-                options: {
-                    sassDir: './src/sass',
-                    cssDir: './dist/css',
-                    noLineComments: false
-                }
-            }
-        },
-		browserify: {
-			dist: {
-				files: {
-					'dist/js/common.js': 'src/js/app.js'
-				}
-			}
+	
+	var options = {
+		// Project settings
+		config: {
+			// in this directory you can find your grunt config tasks
+			src: 'helpers/_grunt/*.js'
 		},
-		handlebars: {
-			compile: {
-				options: {
-					helpers: require('./src/js/helpers/handlebars.js'),
-					node: true
-				},
-				files: {
-					'./src/js/templates.js' : [ './src/templates/**/*.hbs']
-				}
-			}
-		},
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-			},
-			dist: {
-				files: {}
-			}
+		// define your path structure
+		paths: {
+			// helpers folder with grunt tasks and styleguide templates, tests and photobox
+			helper: 'helpers',
+			// resources folder with working files
+			src: 'src',
+			// dist folder
+			dist: '_dist'
 		}
-	});
+	};
+
+	// Load grunt configurations automatically
+	var configs = require('load-grunt-configs')(grunt, options);
+	// Define the configuration for all the tasks
+	grunt.initConfig(configs);
 
 	grunt.registerTask('test', ['']);
 
 	grunt.registerTask('css', [
-		'compass:dev'
+		'sass'
 	]);
 
 	grunt.registerTask('js', [
+		'handlebars',
 		'browserify'
 	]);
 
 	grunt.registerTask('build', [
+		'assemble',
 		'handlebars',
 		'css',
 		'js'
