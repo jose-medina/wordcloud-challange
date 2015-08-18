@@ -26,11 +26,6 @@ module.exports = function(grunt) {
 	// Define the configuration for all the tasks
 	grunt.initConfig(configs);
 
-	grunt.registerTask('test', [
-		'browserify:specs',
-		'jasmine'
-	]);
-
 	grunt.registerTask('css', [
 		'sass'
 	]);
@@ -41,7 +36,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
-		'assemble',
+		'assemble:app',
 		'handlebars',
 		'css',
 		'js'

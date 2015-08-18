@@ -3,7 +3,7 @@ var TopicModel = require('../js/models/TopicModel.js');
 var data = require('../data/topics.json');
 var test = require('tape');
 
-test('Test Topic Information Model', function (t) {
+test('Test Topic Information Model', function (t) {	
 	var topicInfoModel;
 	var topicModel;
 	var topicInformationModelJson = {
@@ -13,6 +13,9 @@ test('Test Topic Information Model', function (t) {
 			neutral: null,
 			negative: 5
 		};
+
+	t.comment('\n-------------------------------------');
+	t.comment('\n');
 
 	t.ok(TopicInformationModel, 'the model exists');
 
@@ -33,6 +36,8 @@ test('Test Topic Information Model', function (t) {
 	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).neutral, undefined, 'neutral is not undefined or null');
 
 	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).neutral, undefined, 'negative is not undefined or null');
+	
+	t.comment('\n');
 
 	t.end();
 });

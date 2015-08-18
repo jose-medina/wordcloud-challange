@@ -5,6 +5,9 @@ var test = require('tape');
 test('Test Topic Information Model', function (t) {
 	var topicModel;
 
+	t.comment('\n-------------------------------------');
+	t.comment('\n');
+
 	t.ok(TopicModel, 'the model exists');
 
 	t.doesNotThrow(function () {
@@ -16,6 +19,8 @@ test('Test Topic Information Model', function (t) {
 	t.notEqual(topicModel._getSizeClass(), 'topic-size-NaN', 'size class is calculated correctly');
 
 	t.notEqual(topicModel._getSizeClass(), undefined, 'sentiment class is not undefined');
+
+	t.comment('\n');
 
 	t.end();
 });
