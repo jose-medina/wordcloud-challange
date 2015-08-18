@@ -19,6 +19,28 @@ _These are the main properties and features of this webapp:_
 3. Run `grunt` in order to build the app
 4. `_dist` folder will be generated. You can use your localhost to serve the webapp
 
+## Development
+
+_Worldcloud project has 4 main grunt tasks:_
+
+#### css
+
+_The **`css`** task runs `sass` in order to compile the scss stylesheets and it also contains the `cssmin` task that minify the compiled css and creates the source map, so that it can be debugged on the browser._
+
+#### js
+
+_The **`js`** task runs first of all `handlebars` in order to compile the hbs templates corresponding to the Ampersand Views. Afterwards the `browserify` task will build the app.js depending on the require's of all js files and the it will run the `uglify` so that the app.js is minified and the source map is created._
+
+#### build
+		
+_The **`build`** task constructs the essencial app files and copies them to the _dist folder. First runs `clean`. So will be removed the _dist folder. Then is the turn of `assemble` so that the index.html is constructed and copied to the _dist folder. After this task the previously defined tasks `css` and `js` will be executed._
+
+#### dev
+
+_The **`dev`**  task runs first the `build` and then the `watch` task that compiles the code if there is a change in a file._
+
+_Hint: *The default task is `build`. That means if we run only `grunt` on the terminal, `build` will be executed*_
+
 ## Testing
 
 _In order to test this project, you have to install first a couple of modules:_
