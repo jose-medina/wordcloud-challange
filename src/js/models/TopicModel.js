@@ -28,10 +28,10 @@ module.exports = AmpersandModel.extend({
 				result = 'high-sentiment-score';
 				break;
 			case sentimentScore < 40:
-				result = 'medium-sentiment-score';
+				result = 'low-sentiment-score';
 				break;
 			default:
-				result = 'low-sentiment-score';
+				result = 'medium-sentiment-score';
 		}
 
 		return result;
