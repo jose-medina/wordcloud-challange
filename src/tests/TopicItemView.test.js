@@ -29,8 +29,8 @@ test('Test Topic Item View', function (t) {
 
 	t.equal(topicItemView.render(), topicItemView, 'the view renders correctly');
 
-	t.throws(function () {
+	t.doesNotThrow(function () {
 		topicItemView.onTopicClicked({preventDefault: function () {}});
-	}, Error, 'on topic click is expected an exception');
+	}, 'on topic click is expected an exception');
 
 });
