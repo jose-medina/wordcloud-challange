@@ -1,5 +1,4 @@
 var AmpersandView = require('ampersand-view');
-var AmpersandApp = require('ampersand-app');
 var TopicItemView = require('./TopicItemView.js');
 var templates = require('../templates.js');
 
@@ -10,22 +9,22 @@ module.exports = AmpersandView.extend({
 		this.collection.fetch({reset: true});
 
 		this.listenTo(this.collection, 'reset', this.render);
-	},
-	onTopicClicked: function (id) {
-		AmpersandApp.navigate(id);
+		this.listenTo(this, 'newTopicSelected', this._newTopicSelected);
 	},
 	showTopic: function () {
 		console.debug(arguments)
+	},
+	_newTopicSelected: function (topic) {
+		// set status of old active item to false
+		this.currentTopic && this.currentTopic.model.set('status', false);
+		// set the status of the new active item to true
+		this.currentTopic = topic;
+		this.currentTopic.model.set('status', true);
 	},
 	setSubview: function (model) {
 		this.subviews[model.get('id')] = this.renderSubview(new TopicItemView({
 			model: model
 		}), this.el);
-	},
-	setCurrentSubview: function (topic) {
-		this.currentSubview && this.currentSubview.model.set('status', false);
-		this.currentSubview = topic;
-		this.currentSubview.model.set('status', true);
 	},
 	getSubview: function (id) {
 		return this.subviews[id];

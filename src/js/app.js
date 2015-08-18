@@ -20,8 +20,8 @@ AmpersandApp.extend({
 
 		this.router.on('route:showTopic', function (id) {
 			var topic = wordcloudView.getSubview(decodeURIComponent(id));
-			wordcloudView.setCurrentSubview(topic);
-			topicInformationView.model.set(topicInformationView.model.parse(topic.model.toJSON()));
+			wordcloudView.trigger('newTopicSelected', topic);
+			topicInformationView.trigger('newModel', topic.model);
 		});
 
 		this.router.history.start({pushState: true, root: ''});

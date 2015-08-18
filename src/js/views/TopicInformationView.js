@@ -5,6 +5,10 @@ module.exports = AmpersandView.extend({
 	template: templates['src/templates/views/topic-information.hbs'],
 	initialize: function () {
 		this.listenTo(this.model, 'reset change', this.render);
+		this.listenTo(this, 'newModel', this._newModel);
+	},
+	_newModel: function (model) {
+		this.model.set(this.model.parse(model.toJSON()));
 	},
 	render: function () {
 		this.el.innerHTML = this.template(this.model.toJSON());

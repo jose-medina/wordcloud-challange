@@ -8,12 +8,14 @@ module.exports = AmpersandView.extend({
 		'click a': 'onTopicClicked'
 	},
 	initialize: function () {
-		this.listenTo(this.model, 'change:status', this._toggleState.bind(this));
+		this.listenTo(this.model, 'change:status', this._toggleState);
 	},
 	onTopicClicked: function (event) {
 		event.preventDefault();
 
-		this.parent.onTopicClicked('topic/' + encodeURIComponent(this.model.get('id')));
+		this.model.set('status', true);
+		// go to the new location
+		AmpersandApp.navigate('topic/' + encodeURIComponent(this.model.get('id')));
 	},
 	_toggleState: function (model, value) {
 		value ? this.el.classList.add('js-active') : this.el.classList.remove('js-active');
