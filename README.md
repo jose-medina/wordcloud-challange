@@ -11,6 +11,7 @@ _These are the main properties and features of this webapp:_
 * Red topics are the ones with a sentiment score < 40
 * The rest of the topics are displayed in grey
 * When a topic is clicked, metadata about the topic is displayed (total volume, and how that breaks down into positive, neutral and negative sentiment)
+* Router history will record all changes on the app. Back/forward buttons can be used dynamically
 
 ## Project Setup
 
