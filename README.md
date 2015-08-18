@@ -41,6 +41,10 @@ _The **`dev`**  task runs first the `build` and then the `watch` task that compi
 
 _Hint: *The default task is `build`. That means if we run only `grunt` on the terminal, `build` will be executed*_
 
+## Production
+
+_The `css` and `js` tasks provide us with the main js and css source maps. That means, we are getting minified files that can be turn into their unbuilt versions._
+
 ## Testing
 
 _In order to test this project, you have to install first a couple of modules:_
@@ -69,4 +73,8 @@ _or test everything_
 browserify src/tests/*.test.js | testling
 ```
 
-_Hint: *You may need to install the Xvfb library `apt-get install xvfb` or use the `-u` property of testling `browserify {filePath} | testling -u`. I personally suggest to install Xvfb.*_
+_Hint: *You may need to install the Xvfb library*_
+```shell 
+$ apt-get install xvfb
+``` 
+_*or use the `-u` property of testling `browserify {filePath} | testling -u`. I personally suggest to install Xvfb.*_
