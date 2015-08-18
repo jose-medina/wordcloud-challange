@@ -2,7 +2,7 @@ var TopicModel = require('../js/models/TopicModel.js');
 var data = require('../data/topics.json');
 var test = require('tape');
 
-test('Test Topic Information Model', function (t) {
+test('Test Topic Model', function (t) {
 	var topicModel;
 
 	t.comment('\n-------------------------------------');

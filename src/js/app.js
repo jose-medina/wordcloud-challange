@@ -33,3 +33,5 @@ AmpersandApp.extend({
 });
 
 window.onload = AmpersandApp.onWindowLoad.bind(AmpersandApp);
+
+module.exports = AmpersandApp;

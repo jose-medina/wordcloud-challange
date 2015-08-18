@@ -5,7 +5,7 @@ var TopicCollection = require('../js/collections/TopicCollection.js');
 var data = require('../data/topics.json');
 var test = require('tape');
 
-test('Test Topic Item View', function (t) {
+test('Test Wordcloud View', function (t) {
 	var wordcloudView;
 	var viewEl = document.createElement('div');
 
