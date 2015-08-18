@@ -38,8 +38,8 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
+		'clean',
 		'assemble:app',
-		'handlebars',
 		'css',
 		'js'
 	]);
