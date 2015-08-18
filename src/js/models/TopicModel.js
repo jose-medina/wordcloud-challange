@@ -7,6 +7,9 @@
 var AmpersandModel = require('ampersand-model');
 
 module.exports = AmpersandModel.extend({
+	/**
+	* default attributes
+	*/
 	props: {
 		id: '',
 		label: '',
@@ -18,13 +21,23 @@ module.exports = AmpersandModel.extend({
 		maxVolume: 0,
 		sizeClass: ''
 	},
+	/**
+	* initialize the model set to new attributes according to
+	* the new values
+	*/
 	initialize: function () {
 		this.set('sentimentClass', this._getSentimentClass());
 		this.set('sizeClass', this._getSizeClass());
 	},
+	/**
+	* calculate the topic size depending on the topic's volume 
+	*/
 	_getSizeClass: function () {
 		return 'topic-size-' + Math.ceil((this.get('volume') / this.get('maxVolume')) * 6);
 	},
+	/**
+	* calculate the color depending on the topic's sentiment 
+	*/
 	_getSentimentClass: function () {
 		var result;
 		var sentimentScore = this.get('sentimentScore');

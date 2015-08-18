@@ -11,8 +11,14 @@ var TopicCollection = require('./collections/TopicCollection.js');
 var TopicInformationModel = require('./models/TopicInformationModel.js');
 
 AmpersandApp.extend({
-    router: new Router(),
-    onWindowLoad: function () {
+	/**
+	* cache the router instance in the app model
+	*/
+	router: new Router(),
+	/**
+	* it will be execute when the dom is ready
+	*/
+	onWindowLoad: function () {
 		var wordcloudView = new WordcloudView({
 			el: document.getElementById('wordcloud'),
 			collection: new TopicCollection()
@@ -30,11 +36,14 @@ AmpersandApp.extend({
 		});
 
 		this.router.history.start({pushState: true, root: ''});
-    },
-    navigate: function (page) {
-        var url = (page.charAt(0) === '/') ? page.slice(1) : page;
-        this.router.history.navigate(url, {trigger: true});
-    }
+	},
+	/**
+	* navigates through the app using the router history
+	*/
+	navigate: function (page) {
+		var url = (page.charAt(0) === '/') ? page.slice(1) : page;
+		this.router.history.navigate(url, {trigger: true});
+	}
 });
 
 window.onload = AmpersandApp.onWindowLoad.bind(AmpersandApp);

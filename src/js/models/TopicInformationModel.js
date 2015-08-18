@@ -7,6 +7,9 @@
 var AmpersandModel = require('ampersand-model');
 
 module.exports = AmpersandModel.extend({
+	/**
+	* default attributes
+	*/
 	props: {
 		label: '',
 		sentimentScore: 0,
@@ -14,11 +17,19 @@ module.exports = AmpersandModel.extend({
 		neutral: 0,
 		negative: 0
 	},
-	initialize: function () {
-	},
+	/**
+	* initialize the model
+	*/
+	initialize: function () {},
+	/**
+	* returns the value or 0 if it is 0 or null/undefined
+	*/
 	_valueOrZero: function (value) {
 		return value ? value : 0;
 	},
+	/**
+	* parse the attributes before storing them
+	*/
 	parse: function (res) {
 		return {
 			label: res.label,
