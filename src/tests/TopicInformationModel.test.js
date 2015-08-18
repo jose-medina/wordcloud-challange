@@ -31,11 +31,11 @@ test('Test Topic Information Model', function (t) {
 		topicInfoModel.parse(topicModel.toJSON());
 	}, 'the topic information model parses topic model correctly');
 	
-	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).neutral, undefined, 'positive is not undefined or null');
+	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).positive, undefined, 'positive is not undefined or null');
 
 	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).neutral, undefined, 'neutral is not undefined or null');
 
-	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).neutral, undefined, 'negative is not undefined or null');
+	t.notEqual(topicInfoModel.parse(topicModel.toJSON()).negative, undefined, 'negative is not undefined or null');
 	
 	t.comment('\n');
 

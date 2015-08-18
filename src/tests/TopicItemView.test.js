@@ -9,7 +9,6 @@ test('Test Topic Item View', function (t) {
 	t.comment('\n-------------------------------------');
 	t.comment('\n');
 
-
 	t.ok(TopicItemView, 'the topic information view exists');
 
 	t.doesNotThrow(function () {
