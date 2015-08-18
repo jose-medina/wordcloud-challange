@@ -26,7 +26,7 @@ _or test everything_
 
 `browserify src/tests/*.test.js | testling`
 
-_Hint: *You may need `-u` property of testling if you don't have installed the Xvfb (`apt-get install xvfb`).*_
+_Hint: *You may need to install the Xvfb library `apt-get install xvfb` or use the `-u` property of testling `browserify src/tests/*.test.js | testling`. I personally suggest to install Xvfb.*_
 
 ## Deploying
 
