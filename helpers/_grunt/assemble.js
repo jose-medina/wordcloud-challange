@@ -7,7 +7,7 @@ module.exports = {
 	},
 	app: {
 		files: {
-			'<%= paths.dist %>' : '<%= paths.src %>/templates/pages/index.hbs'
+			'<%= paths.dist %>/' : '<%= paths.src %>/templates/pages/index.hbs'
 		}
 	}
 };
