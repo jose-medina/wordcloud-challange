@@ -13,11 +13,11 @@
     "grunt-browserify": "^4.0.0",
     "grunt-contrib-handlebars": "^0.10.2",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha": "^0.4.13",
     "grunt-sass": "^1.0.0",
     "handlebars": "^3.0.3",
     "jit-grunt": "^0.9.1",
     "load-grunt-configs": "^0.4.3",
+    "tape": "^4.2.0",
     "time-grunt": "^1.2.1"
   }
 }
