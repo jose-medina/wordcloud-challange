@@ -1,12 +1,12 @@
 # _Project_
 
-_Description: _
+_Description:_
 
 ## Project Setup
 
 ## Testing
 
-_In order to test this project, you have to install first a couple of modules:
+_In order to test this project, you have to install first a couple of modules:_
 
 1. `npm install -g tape`
 2. `npm install -g browserify`
