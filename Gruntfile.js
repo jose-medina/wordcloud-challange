@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 		},
 		// define your path structure
 		paths: {
-			// helpers folder with grunt tasks and styleguide templates, tests and photobox
+			// helpers folder with grunt
 			helper: 'helpers',
 			// resources folder with working files
 			src: 'src',
@@ -27,12 +27,14 @@ module.exports = function(grunt) {
 	grunt.initConfig(configs);
 
 	grunt.registerTask('css', [
-		'sass'
+		'sass',
+		'cssmin'
 	]);
 
 	grunt.registerTask('js', [
 		'handlebars',
-		'browserify:dist'
+		'browserify:dist',
+		'uglify:app'
 	]);
 
 	grunt.registerTask('build', [
