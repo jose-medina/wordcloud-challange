@@ -3,31 +3,35 @@ var TopicModel = require('../js/models/TopicModel.js');
 var data = require('../data/topics.json');
 var test = require('tape');
 
-test('Test Topic Information View', function (t) {
-	var topicInfoView;
-
-	var viewEl = document.createElement('div');
-
-	viewEl.setAttribute('id', 'wordcloud');
-	viewEl.setAttribute('class', 'column');
+test('Test Topic Item View', function (t) {
+	var topicItemView;
 
 	t.comment('\n-------------------------------------');
 	t.comment('\n');
 
-	t.ok(TopicInformationView, 'the topic information view exists');
+
+	t.ok(TopicItemView, 'the topic information view exists');
 
 	t.doesNotThrow(function () {
-		topicInfoView = new TopicInformationView({
-			el: viewEl,
-			model: new TopicInformationModel(topicInformationModelJson)
+		topicItemView = new TopicItemView({
+			model: new TopicModel(data.topics[0])
 		});
 	}, 'the topic information view is created');
 
-	t.notEqual(topicInfoView.template, undefined, 'the template is not undefined');
+	topicItemView.model.on('change:status', function (id) {
+		t.pass('change status on topic click');
 
-	t.equal(topicInfoView.render(), topicInfoView, 'the view renders correctly');
+		t.comment('\n');
 
-	t.comment('\n');
+		t.end();
+	});
 
-	t.end();
+	t.notEqual(topicItemView.template, undefined, 'the template is not undefined');
+
+	t.equal(topicItemView.render(), topicItemView, 'the view renders correctly');
+
+	t.throws(function () {
+		topicItemView.onTopicClicked({preventDefault: function () {}});
+	}, Error, 'on topic click is expected an exception');
+
 });
