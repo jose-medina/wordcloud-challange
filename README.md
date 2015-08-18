@@ -12,7 +12,7 @@ _These are the main properties and features of this webapp:_
 * The rest of the topics are displayed in grey
 * When a topic is clicked, metadata about the topic is displayed (total volume, and how that breaks down into positive, neutral and negative sentiment)
  
-_**Wordcloud Challange** is built with Ampersand.js (Backbone based framework) and Browserify (Commonjs). All of this runs on top of Grunt, the javascript task runner, which allows us to compile the js modules, sass stylesheets as well as to generate the markup via Assemble._
+_**Wordcloud Challange** is built with Ampersand.js (Backbone based framework) and Browserify (Commonjs). All of this runs on top of Grunt, the javascript task runner, which allows to compile the js modules, sass stylesheets as well as to generate the markup via Assemble._
 
 ## Project Setup
 
@@ -50,9 +50,3 @@ browserify src/tests/*.test.js | testling
 ```
 
 _Hint: *You may need to install the Xvfb library `apt-get install xvfb` or use the `-u` property of testling `browserify {filePath} | testling -u`. I personally suggest to install Xvfb.*_
-
-## Deploying
-
-## Troubleshooting & Useful Tools
-
-## License
