@@ -1,3 +1,8 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		topicCollection
+ * @description topic collection is a set of topic models
+ */
 var AmpersandCollection = require('ampersand-rest-collection');
 var TopicModel = require('../models/TopicModel.js');
 

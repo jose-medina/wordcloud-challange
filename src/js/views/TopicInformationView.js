@@ -1,3 +1,9 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		topicInformationView
+ * @description topic information view render the metadata view of an
+ 				active topic
+ */
 var AmpersandView = require('ampersand-view');
 var templates = require('../templates.js');
 

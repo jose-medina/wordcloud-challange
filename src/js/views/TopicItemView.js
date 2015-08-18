@@ -1,3 +1,9 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		topicItemView
+ * @description topic item view render one topic of the wordcloud and
+ 				triggers the app navigate
+ */
 var AmpersandView = require('ampersand-view');
 var AmpersandApp = require('ampersand-app');
 var templates = require('../templates.js');

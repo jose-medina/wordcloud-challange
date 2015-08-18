@@ -1,3 +1,9 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		topicInformationModel
+ * @description topic information model defines what attributes the topic
+				metadata view has. They will be taken from the active topic item model
+ */
 var AmpersandModel = require('ampersand-model');
 
 module.exports = AmpersandModel.extend({

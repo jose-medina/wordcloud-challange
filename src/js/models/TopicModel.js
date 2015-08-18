@@ -1,3 +1,9 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		topicModel
+ * @description topic model define what attributes a wordcloud topic
+ 				has and interpret it in order to generate other attributes 
+ */
 var AmpersandModel = require('ampersand-model');
 
 module.exports = AmpersandModel.extend({

@@ -1,3 +1,9 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		wordcloudView
+ * @description word cloud view that renders the different 
+ 				topics and control which one is selected
+ */
 var AmpersandView = require('ampersand-view');
 var TopicItemView = require('./TopicItemView.js');
 var templates = require('../templates.js');
@@ -10,9 +16,6 @@ module.exports = AmpersandView.extend({
 
 		this.listenTo(this.collection, 'reset', this.render);
 		this.listenTo(this, 'newTopicSelected', this._newTopicSelected);
-	},
-	showTopic: function () {
-		console.debug(arguments)
 	},
 	_newTopicSelected: function (topic) {
 		// set status of old active item to false

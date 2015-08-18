@@ -1,3 +1,8 @@
+/**
+ * @author: 	Jose Luis Medina Burgos
+ * @module 		app
+ * @description main module that controls the app
+ */
 var AmpersandApp = require('ampersand-app');
 var Router = require('./router.js');
 var WordcloudView = require('./views/WordcloudView.js');
